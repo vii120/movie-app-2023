@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   const data = await (async () => {
     if (isProd) {
       const queryString = getQueryString({ language, with_genres })
-      const res = await fetch(`${PREFIX_URL}/${queryString}`, {
+      const res = await fetch(`${PREFIX_URL}${queryString}`, {
         headers: {
           Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
           'Content-Type': 'application/json',
