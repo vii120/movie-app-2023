@@ -1,16 +1,21 @@
 import styled from 'styled-components'
 
 export const GridBox = ({
-  children,
   className,
+  imageSrc,
+  title,
 }: {
-  children?: React.ReactNode
   className?: string
+  imageSrc?: string
+  title?: string
 }) => {
   return (
     <GridBoxWrapper className={className}>
       <GridBoxShadow />
-      <GridBoxInner>{children}</GridBoxInner>
+      <GridImageWrapper>
+        <GridBackground style={{ backgroundImage: `url(${imageSrc})` }} />
+        <GridImage src={imageSrc} alt={title} />
+      </GridImageWrapper>
     </GridBoxWrapper>
   )
 }
@@ -41,9 +46,34 @@ const GridBoxWrapper = styled.div`
   }
 `
 
-const GridBoxInner = styled.div`
+const GridImageWrapper = styled.div`
   height: 100%;
   border-radius: inherit;
   background-color: var(--primary-bg);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const GridImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+`
+
+const GridBackground = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background: no-repeat center / cover;
+  opacity: 0.5;
+  filter: blur(5px) brightness(0.8);
 `
