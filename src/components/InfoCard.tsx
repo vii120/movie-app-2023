@@ -24,7 +24,7 @@ export const InfoCard = ({
         <Poster
           src={getImgFullPath(posterPath)}
           alt={name}
-          crossOrigin="anonymous"
+          // crossOrigin="anonymous"
         />
         <InfoRate>
           <span>{rating.toFixed(1)}</span>/10

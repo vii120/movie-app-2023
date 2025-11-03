@@ -59,7 +59,7 @@ export const MainSection = () => {
                   <SlidePoster
                     src={getImgFullPath(movie.poster_path)}
                     alt={movie.title}
-                    crossOrigin="anonymous"
+                    // crossOrigin="anonymous"
                   />
                 </SwiperSlide>
               ))}
